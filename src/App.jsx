@@ -1,16 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { MovieCard } from "./components/MovieCard";
-import movieList from "./data/movieListData.json";
+import { MovieDetail } from "./components/MovieDetail";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="flex-center min-h-screen bg-[#141517] text-white">
-      <div className="flex-between max-w-[1200px] flex-wrap gap-8">
-        {movieList.results.map((movieItem) => (
-          <MovieCard key={movieItem.id} movieItem={movieItem} />
-        ))}
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/details" element={<MovieDetail />} />
+      </Route>
+    </Routes>
   );
 }
 
