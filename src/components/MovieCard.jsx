@@ -1,10 +1,10 @@
 import { TMDB_IMAGE_BASE_URL } from "../constants/tmdb";
 
-export function MovieCard({ movieItem }) {
+export function MovieCard({ movieItem, onClick }) {
   const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`;
 
   return (
-    <section className="w-[250px]">
+    <section className="w-[250px]" onClick={onClick}>
       <ul>
         <li>
           <img
