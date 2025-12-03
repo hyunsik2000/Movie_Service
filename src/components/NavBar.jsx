@@ -19,7 +19,6 @@ export function NavBar() {
             </ul>
           </nav>
         </div>
-
         <div className="flex items-center gap-4 text-sm text-gray-300">
           <button className="cursor-pointer hover:text-white">검색</button>
           <button className="rounded bg-red-600 px-3 py-1 text-xs font-semibold hover:bg-red-700">

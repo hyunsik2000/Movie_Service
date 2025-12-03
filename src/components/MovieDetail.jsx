@@ -5,7 +5,7 @@ export function MovieDetail() {
   const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieDetail.poster_path}`;
 
   return (
-    <section className="flex max-w-5xl min-w-sm flex-col items-center sm:flex-row">
+    <section className="flex max-w-5xl flex-col items-center sm:flex-row">
       <img
         src={imgSrc}
         alt={movieDetail}

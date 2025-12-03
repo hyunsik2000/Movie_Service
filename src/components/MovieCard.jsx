@@ -13,7 +13,7 @@ export function MovieCard({ movieItem, onClick }) {
             className="h-[375px] object-cover"
           />
         </li>
-        <li className="">{movieItem.original_title}</li>
+        <li className="w-full truncate">{movieItem.original_title}</li>
         <li>{movieItem.vote_average}</li>
       </ul>
     </section>
