@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import { ErrorFallback } from "../components/common/ErrorFallback";
+import { ErrorFallback } from "@components/common/ErrorFallback";
 import { ErrorBoundary } from "react-error-boundary";
-import { MovieList } from "../components/MovieList/MovieList";
-import { MovieListSkeleton } from "../components/MovieList/MovieListSkeleton";
+import { MovieList } from "@components/MovieList/MovieList";
+import { MovieListSkeleton } from "@components/MovieList/MovieListSkeleton";
 
 function Home() {
   return (
