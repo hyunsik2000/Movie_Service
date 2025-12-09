@@ -1,5 +1,11 @@
-import { UserInputField } from "@/components/SignInput/UserInput";
+import { UserInputField } from "@/components/InputField/UserInputField";
 import { useState } from "react";
+import {
+  validateName,
+  validateEmail,
+  validatePassword,
+  validatePasswordConfirm,
+} from "@/utils/validateForm";
 
 export function Login() {
   const [form, setForm] = useState({
@@ -13,15 +19,34 @@ export function Login() {
   });
 
   const handleChange = (field) => (e) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    const value = e.target.value;
+
+    setForm((prev) => {
+      const updatedForm = { ...prev, [field]: value };
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: field === "email" ? validateEmail(value) : prevErrors.email,
+        password:
+          field === "password" ? validatePassword(value) : prevErrors.password,
+      }));
+      return updatedForm;
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const finalErrors = {
+      email: validateEmail(form.email),
+      password: validatePassword(form.password),
+    };
+    setErrors(finalErrors);
+    const hasError = Object.values(finalErrors).some((v) => v !== "");
+    if (hasError) return;
+    alert("로그인 성공!");
   };
 
   return (
-    <section className="mx-auto max-w-md py-20">
+    <section className="mx-auto w-[300px] max-w-md py-20">
       <h2 className="flex-center mb-6 text-2xl font-semibold text-gray-800 dark:text-gray-100">
         로그인
       </h2>
@@ -47,7 +72,7 @@ export function Login() {
         />
         <button
           type="submit"
-          className="mt-2 rounded-lg bg-red-600 py-2.5 text-white"
+          className="mt-4 cursor-pointer rounded-lg bg-red-600 py-[13px] text-white"
         >
           로그인
         </button>
