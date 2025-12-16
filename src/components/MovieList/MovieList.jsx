@@ -2,24 +2,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
-import { useFetch } from "@hooks/useFetch";
-import { useState } from "react";
-import { TMDB_API_BASE_URL } from "@constants/tmdb";
+import { fetchMovies } from "@/utils/fetchMovies";
+import { MovieListSkeleton } from "./MovieListSkeleton";
 
-export function MovieList() {
+export function MovieList({ url }) {
   const navigate = useNavigate();
-  const url = `${TMDB_API_BASE_URL}/movie/popular?language=ko-KR&page=1`;
+  const { data } = fetchMovies(url);
 
-  const { data } = useFetch(url);
-  const [movies] = useState(() =>
-    data.results.filter((result) => result.adult === false),
-  );
+  const movies = data?.results?.filter((movie) => !movie.adult) ?? [];
 
   return (
     <Swiper
+      key={url}
       spaceBetween={20}
+      slidesPerView={1}
       breakpoints={{
-        0: { slidesPerView: 1 },
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },

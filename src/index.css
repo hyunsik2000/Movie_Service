@@ -22,6 +22,10 @@
   .nav-link-list > li a {
     @apply text-[#4B5563] hover:text-[#111827] dark:text-[#D1D5DB] dark:hover:text-white;
   }
+
+  .skeleton-text-bg {
+    @apply bg-gray-400 text-gray-400 dark:bg-[#272A30] dark:text-[#272A30];
+  }
 }
 
 @layer base {

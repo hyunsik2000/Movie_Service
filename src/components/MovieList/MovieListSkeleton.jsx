@@ -1,17 +1,31 @@
-export function MovieListSkeleton() {
-  const items = [1, 2, 3, 4];
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
+export function MovieListSkeleton({ count = 8 }) {
   return (
-    <section className="app-theme">
-      <ul className="flex gap-5">
-        {items.map((i) => (
-          <li key={i} className="flex w-[285px] animate-pulse flex-col gap-2">
-            <div className="h-[427.5px] w-[285px] rounded bg-gray-500 dark:bg-[#1E2024]" />
-            <div className="h-4 w-3/5 rounded-sm bg-gray-400 dark:bg-[#272A30]" />
-            <div className="h-5 w-6 rounded-sm bg-gray-400 dark:bg-[#272A30]" />
-          </li>
+    <div className="w-full overflow-hidden">
+      <Swiper
+        className="w-full"
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+      >
+        {Array.from({ length: count }).map((_, idx) => (
+          <SwiperSlide key={idx}>
+            <article className="w-full animate-pulse">
+              <div className="flex flex-col gap-2">
+                <div className="aspect-2/3 w-full overflow-hidden rounded bg-gray-300 dark:bg-[#1E2024]" />
+                <div className="h-4 w-4/5 rounded bg-gray-300 dark:bg-[#1E2024]" />
+                <div className="h-4 w-1/4 rounded bg-gray-300 dark:bg-[#1E2024]" />
+              </div>
+            </article>
+          </SwiperSlide>
         ))}
-      </ul>
-    </section>
+      </Swiper>
+    </div>
   );
 }

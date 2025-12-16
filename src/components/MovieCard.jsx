@@ -1,15 +1,22 @@
 import { TMDB_IMAGE_BASE_URL } from "@constants/tmdb";
+import { CommonThumbnail } from "./common/CommonThumbnail";
 
 export function MovieCard({ movieItem, onClick }) {
-  const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`;
-
   return (
     <article className="cursor-pointer" onClick={onClick}>
       <ul className="flex flex-col gap-2">
         <li>
-          <div className="aspect-2/3 w-full">
-            <img src={imgSrc} alt={movieItem} className="h-full object-cover" />
-          </div>
+          {/* <img
+            src={`${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`}
+            alt={movieItem.title}
+          /> */}
+          <CommonThumbnail
+            src={`${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`}
+            alt={movieItem.title}
+            width="100%"
+            height="100%"
+            propsClass="aspect-2/3 h-full"
+          />
         </li>
         <li className="w-full truncate font-medium">{movieItem.title}</li>
         <li className="text-sm dark:text-gray-300">

@@ -1,7 +1,6 @@
-// 글로벌 캐시 (요청별로 저장)
 const cache = new Map();
 
-export function useFetch(url) {
+export function fetchMovies(url) {
   const token = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
   const key = url + (token || "");
 
@@ -55,7 +54,6 @@ export function useFetch(url) {
         error: null,
         promise: null,
       });
-      console.log(json);
       resolve(json); // Suspense가 다시 렌더하도록 resolve
     })
     .catch((err) => {

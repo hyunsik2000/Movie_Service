@@ -19,7 +19,7 @@ export function useSearchFetch(keyword) {
         const token = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
         const res = await fetch(
-          `${TMDB_API_BASE_URL}/search/movie?query=${keyword}&page=1`,
+          `${TMDB_API_BASE_URL}/search/movie?query=${keyword}&page=1&language=ko-KR&include_adult=false&region=KR`,
           {
             headers: {
               accept: "application/json",
