@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import { fetchMovies } from "@/utils/fetchMovies";
-import { TMDB_API_BASE_URL, TMDB_IMAGE_BASE_URL } from "@constants/tmdb";
+import {
+  FALLBACK_IMG,
+  TMDB_API_BASE_URL,
+  TMDB_IMAGE_BASE_URL,
+} from "@constants/tmdb";
 
 export function MovieDetail() {
   const { id } = useParams();
@@ -10,12 +14,18 @@ export function MovieDetail() {
 
   if (!movieDetail) return null;
 
-  const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieDetail.poster_path}`;
+  const imgSrc = movieDetail.poster_path
+    ? `${TMDB_IMAGE_BASE_URL}${movieDetail.poster_path}`
+    : FALLBACK_IMG;
 
   return (
     <section className="mx-auto flex max-w-5xl flex-col items-center gap-12 p-[10px_20px] sm:flex-row sm:items-start">
       <div className="aspect-2/3 w-full sm:w-[50%]">
-        <img src={imgSrc} alt={movieDetail.title} className="h-full w-full" />
+        <img
+          src={imgSrc}
+          alt={movieDetail.title}
+          className="h-full w-full object-cover"
+        />
       </div>
       <ul className="flex w-full flex-1 flex-col gap-4 sm:mt-10 sm:flex sm:w-[50%]">
         <li className="flex-between">

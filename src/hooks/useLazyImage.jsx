@@ -25,9 +25,9 @@ export function useLazyImage() {
     return () => observer.disconnect();
   }, []);
 
-  const onError = () => {
+  const setFallback = () => {
     setSrc(FALLBACK_IMG);
   };
 
-  return { imgRef, src, onError };
+  return { imgRef, src, setFallback };
 }

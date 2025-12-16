@@ -1,4 +1,3 @@
-// 글로벌 캐시 (요청별로 저장)
 const cache = new Map();
 
 export function fetchMovies(url) {
@@ -55,7 +54,6 @@ export function fetchMovies(url) {
         error: null,
         promise: null,
       });
-      console.log(json);
       resolve(json); // Suspense가 다시 렌더하도록 resolve
     })
     .catch((err) => {

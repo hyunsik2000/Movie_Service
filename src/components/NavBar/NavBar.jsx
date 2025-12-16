@@ -26,6 +26,7 @@ export function NavBar() {
             </ul>
           </nav>
         </div>
+
         <div className="hidden items-center gap-2 text-sm text-gray-300 sm:flex">
           <button
             type="button"
@@ -45,14 +46,14 @@ export function NavBar() {
         </div>
         <button
           type="button"
-          className="text-2xl text-gray-300 sm:hidden"
+          className="cursor-pointer text-2xl text-gray-300 sm:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           {isMenuOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
       <div
-        className={`px-6 text-white duration-500 sm:hidden ${isMenuOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"} `}
+        className={`overflow-hidden px-6 text-white duration-500 sm:hidden ${isMenuOpen ? "max-h-[300px]" : "max-h-0"} `}
       >
         <ul className="nav-link-list flex flex-col gap-4 py-4">
           {NAV_LINK.map((el) => (
@@ -62,6 +63,7 @@ export function NavBar() {
               </Link>
             </li>
           ))}
+          <ThemeButton />
           <button
             type="button"
             className="w-full rounded bg-red-600 px-3 py-1 text-lg font-semibold text-white transition-colors hover:bg-red-700"

@@ -6,6 +6,10 @@ export const MOVIE_SECTIONS = [
     url: combineUrl(TMDB_LIST.POPULAR),
   },
   {
+    title: "금주의 트렌드",
+    url: combineUrl(TMDB_LIST.TRENDING_WEEK),
+  },
+  {
     title: "오늘의 트렌드",
     url: combineUrl(TMDB_LIST.TRENDING_DAY),
   },

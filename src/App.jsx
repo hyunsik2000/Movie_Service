@@ -5,6 +5,7 @@ import Detail from "@pages/Detail";
 import { Search } from "@/pages/Search";
 import { SignUp } from "./pages/Signup";
 import { Login } from "./pages/Login";
+import { MovieDetailSkeleton } from "./components/MovieDetail/MovieDetailSkeleton";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<Login />} />
+        <Route path="detail" element={<MovieDetailSkeleton />} />
       </Route>
     </Routes>
   );
