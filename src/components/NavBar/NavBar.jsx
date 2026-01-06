@@ -14,7 +14,7 @@ export function NavBar() {
       <div className="flex-between mx-auto h-[70px] max-w-5xl px-6">
         <div className="flex items-center gap-6">
           <a href="/">
-            <div className="text-2xl font-bold text-red-600">NETFLIX</div>
+            <div className="text-2xl font-bold text-red-600">NETFILX</div>
           </a>
           <nav className="hidden sm:block">
             <ul className="nav-link-list">
