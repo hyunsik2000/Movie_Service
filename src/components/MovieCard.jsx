@@ -6,10 +6,6 @@ export function MovieCard({ movieItem, onClick }) {
     <article className="cursor-pointer" onClick={onClick}>
       <ul className="flex flex-col gap-2">
         <li>
-          {/* <img
-            src={`${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`}
-            alt={movieItem.title}
-          /> */}
           <CommonThumbnail
             src={`${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`}
             alt={movieItem.title}
