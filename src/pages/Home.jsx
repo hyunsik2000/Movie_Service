@@ -10,10 +10,10 @@ function Home() {
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Suspense fallback={<HomeSkeleton sections={MOVIE_SECTIONS} />}>
         <section className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-5">
-          {MOVIE_SECTIONS.map(({ title, url }) => (
+          {MOVIE_SECTIONS.map(({ title, id }) => (
             <div key={title}>
               <h2 className="mb-4 text-xl font-bold">{title}</h2>
-              <MovieList url={url} />
+              <MovieList id={id} />
             </div>
           ))}
         </section>

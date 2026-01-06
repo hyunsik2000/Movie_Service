@@ -3,13 +3,14 @@ import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
 import { fetchMovies } from "@/utils/fetchMovies";
-import { MovieListSkeleton } from "./MovieListSkeleton";
+import { combineUrl } from "@/constants/url";
 
-export function MovieList({ url }) {
+export function MovieList({ id }) {
   const navigate = useNavigate();
+  const url = combineUrl(id);
   const { data } = fetchMovies(url);
 
-  const movies = data?.results?.filter((movie) => !movie.adult) ?? [];
+  const movies = data.results;
 
   return (
     <Swiper
