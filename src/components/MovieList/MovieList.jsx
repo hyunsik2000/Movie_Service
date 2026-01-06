@@ -3,25 +3,25 @@ import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
 import { fetchMovies } from "@/utils/fetchMovies";
-import { MovieListSkeleton } from "./MovieListSkeleton";
+import { combineUrl } from "@/constants/url";
 
-export function MovieList({ url }) {
+export function MovieList({ id }) {
   const navigate = useNavigate();
+  const url = combineUrl(id);
   const { data } = fetchMovies(url);
-
-  const movies = data?.results?.filter((movie) => !movie.adult) ?? [];
+  const movies = data.results;
+  const swiperOptions = {
+    spaceBetween: 20,
+    slidesPerView: 1,
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      1024: { slidesPerView: 4 },
+    },
+  };
 
   return (
-    <Swiper
-      key={url}
-      spaceBetween={20}
-      slidesPerView={1}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-      }}
-    >
+    <Swiper key={url} {...swiperOptions}>
       {movies.map((movie) => (
         <SwiperSlide key={movie.id}>
           <MovieCard
